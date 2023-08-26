@@ -1,0 +1,16 @@
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: ${certificate_issuer_name}
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+  hosts:
+    - ${grafana_ingress_host}
+  tls:
+  - hosts:
+    - ${grafana_ingress_host}
+    secretName: grafana-tls-secret
+
+persistence:
+  enabled: true
+  size: ${grafana_volume_size}
