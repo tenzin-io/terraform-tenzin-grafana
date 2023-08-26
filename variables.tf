@@ -6,7 +6,6 @@ variable "grafana_volume_size" {
 
 variable "certificate_issuer_name" {
   type        = string
-  default     = "lets-encrypt"
   description = "The cert-manager certificate issuer name"
 }
 
