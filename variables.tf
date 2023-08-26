@@ -13,3 +13,23 @@ variable "grafana_ingress_host" {
   type        = string
   description = "The Grafana hostname placed on ingress"
 }
+
+variable "github_org_name" {
+  type        = string
+  description = "The name of the GitHub organization to allow sign-in to Granfa"
+  default     = ""
+}
+
+variable "github_oauth_client_id" {
+  type        = string
+  sensitive   = true
+  description = "GitHub OAuth app client id"
+  default     = ""
+}
+
+variable "github_oauth_client_secret" {
+  type        = string
+  sensitive   = true
+  description = "GitHub OAuth app client secret"
+  default     = ""
+}
