@@ -15,4 +15,19 @@ resource "helm_release" "grafana" {
       github_oauth_client_secret = var.github_oauth_client_secret
     })
   ]
+  depends_on = [helm_release.thanos]
+}
+
+resource "helm_release" "thanos" {
+  name             = "thanos"
+  chart            = "thanos"
+  repository       = "oci://registry-1.docker.io/bitnamicharts/thanos"
+  version          = "12.12.1"
+  namespace        = "grafana"
+  create_namespace = true
+  values = [
+    templatefile("${path.module}/templates/thanos-values.yaml", {
+      thanos_store_endpoints = var.thanos_store_endpoints
+    })
+  ]
 }

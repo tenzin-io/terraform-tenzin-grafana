@@ -15,6 +15,19 @@ persistence:
   enabled: true
   size: ${grafana_volume_size}
 
+datasources:
+  datasource.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Thanos Querier
+        type: prometheus
+        access: proxy
+        url: thanos-query-frontend:9090
+        jsonData:
+          mangeAlerts: false
+          prometheusType: Thanos
+          prometheusVersion: '0.32.1'
+      
 grafana.ini:
   server:
     root_url: "https://%(domain)s"

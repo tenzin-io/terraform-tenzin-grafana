@@ -33,3 +33,9 @@ variable "github_oauth_client_secret" {
   description = "GitHub OAuth app client secret"
   default     = ""
 }
+
+variable "thanos_store_endpoints" {
+  type        = list(string)
+  default     = []
+  description = "A list of store endpoints used by Thanos querier"
+}

@@ -1,0 +1,12 @@
+queryFrontend:
+  enabled: true
+query:
+  enabled: true
+  %{~ if length(thanos_store_endpoints) > 0 ~}
+  stores:
+    %{~ for endpoint in thanos_store_endpoints ~}
+    - ${endpoint}
+    %{~ endfor ~}
+  %{~ endif ~}
+  extraFlags:
+    - '--grpc-client-tls-secure'
