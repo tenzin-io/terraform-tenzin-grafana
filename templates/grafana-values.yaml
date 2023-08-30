@@ -22,9 +22,9 @@ datasources:
       - name: Thanos Querier
         type: prometheus
         access: proxy
-        url: thanos-query-frontend:9090
+        url: http://thanos-query-frontend:9090
         jsonData:
-          mangeAlerts: false
+          manageAlerts: false
           prometheusType: Thanos
           prometheusVersion: '0.32.1'
       
