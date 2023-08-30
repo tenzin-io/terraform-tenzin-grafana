@@ -21,7 +21,7 @@ resource "helm_release" "grafana" {
 resource "helm_release" "thanos" {
   name             = "thanos"
   chart            = "thanos"
-  repository       = "oci://registry-1.docker.io/bitnamicharts/thanos"
+  repository       = "https://charts.bitnami.com/bitnami"
   version          = "12.12.1"
   namespace        = "grafana"
   create_namespace = true
